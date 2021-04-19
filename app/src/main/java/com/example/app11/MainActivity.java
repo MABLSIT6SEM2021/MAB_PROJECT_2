@@ -35,59 +35,59 @@ public class MainActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        binding.buttonDot.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "."));
+        binding.buttonDot.setOnClickListener(view -> binding.editText.setText(String.format("%s.", binding.editText.getText())));
 
-        binding.buttonZero.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "0"));
+        binding.buttonZero.setOnClickListener(view -> binding.editText.setText(String.format("%s0", binding.editText.getText())));
 
-        binding.buttonOne.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "1"));
+        binding.buttonOne.setOnClickListener(view -> binding.editText.setText(String.format("%s1", binding.editText.getText())));
 
-        binding.buttonTwo.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "2"));
+        binding.buttonTwo.setOnClickListener(view -> binding.editText.setText(String.format("%s2", binding.editText.getText())));
 
-        binding.buttonThree.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "3"));
+        binding.buttonThree.setOnClickListener(view -> binding.editText.setText(String.format("%s3", binding.editText.getText())));
 
-        binding.buttonFour.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "4"));
+        binding.buttonFour.setOnClickListener(view -> binding.editText.setText(String.format("%s4", binding.editText.getText())));
 
-        binding.buttonFive.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "5"));
+        binding.buttonFive.setOnClickListener(view -> binding.editText.setText(String.format("%s5", binding.editText.getText())));
 
-        binding.buttonSix.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "6"));
+        binding.buttonSix.setOnClickListener(view -> binding.editText.setText(String.format("%s6", binding.editText.getText())));
 
-        binding.buttonSeven.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "7"));
+        binding.buttonSeven.setOnClickListener(view -> binding.editText.setText(String.format("%s7", binding.editText.getText())));
 
-        binding.buttonEight.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "8"));
+        binding.buttonEight.setOnClickListener(view -> binding.editText.setText(String.format("%s8", binding.editText.getText())));
 
-        binding.buttonNine.setOnClickListener(view -> binding.editText.setText(binding.editText.getText() + "9"));
+        binding.buttonNine.setOnClickListener(view -> binding.editText.setText(String.format("%s9", binding.editText.getText())));
 
         binding.buttonAdd.setOnClickListener(view -> {
             computeCalculation();
             CURRENT_ACTION = ADDITION;
-            binding.textView.setText(decimalFormat.format(valueOne) + "+");
+            binding.textView.setText(String.format("%s+", decimalFormat.format(valueOne)));
             binding.editText.setText(null);
         });
 
         binding.buttonSubtract.setOnClickListener(view -> {
             computeCalculation();
             CURRENT_ACTION = SUBTRACTION;
-            binding.textView.setText(decimalFormat.format(valueOne) + "-");
+            binding.textView.setText(String.format("%s-", decimalFormat.format(valueOne)));
             binding.editText.setText(null);
         });
 
         binding.buttonMultiply.setOnClickListener(view -> {
             computeCalculation();
             CURRENT_ACTION = MULTIPLICATION;
-            binding.textView.setText(decimalFormat.format(valueOne) + "*");
+            binding.textView.setText(String.format("%s*", decimalFormat.format(valueOne)));
             binding.editText.setText(null);
         });
 
         binding.buttonDivide.setOnClickListener(view -> {
             computeCalculation();
             CURRENT_ACTION = DIVISION;
-            binding.textView.setText(decimalFormat.format(valueOne) + "/");
+            binding.textView.setText(String.format("%s/", decimalFormat.format(valueOne)));
             binding.editText.setText(null);
         });
 
         binding.buttonEqual.setOnClickListener(view -> {
             computeCalculation();
-            binding.textView.setText(binding.textView.getText().toString() + decimalFormat.format(valueTwo) + " = " + decimalFormat.format(valueOne));
+            binding.textView.setText(String.format("%s%s = %s", binding.textView.getText().toString(), decimalFormat.format(valueTwo), decimalFormat.format(valueOne)));
             valueOne = Double.NaN;
             CURRENT_ACTION = '0';
         });
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             try {
                 valueOne = Double.parseDouble(binding.editText.getText().toString());
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }
